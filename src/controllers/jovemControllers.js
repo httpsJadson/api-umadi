@@ -10,6 +10,7 @@ class JovemController {
       });
       return res.json(jovens);
     } catch (e) {
+      console.log(e.message);
       return res.status(400).json({
         errors: e.errors.map((err) => err.message),
       });
@@ -25,7 +26,7 @@ class JovemController {
         insert: true,
       });
     } catch (e) {
-      console.log(e);
+      console.log(e.message);
       return res.status(404).json({
         errors: e.errors.map((err) => err.message),
       });
@@ -54,6 +55,7 @@ class JovemController {
 
       return res.json(jovem);
     } catch (e) {
+      console.log(e.message);
       return res.status(404).json({
         errors: e.errors.map((err) => err.message),
       });
@@ -80,6 +82,7 @@ class JovemController {
       const updatedJovem = await jovem.update(req.body);
       return res.json(updatedJovem);
     } catch (e) {
+      console.log(e.message);
       return res.status(400).json({
         errors: e.errors.map((err) => err.message),
       });
@@ -106,6 +109,7 @@ class JovemController {
       await jovem.destroy();
       return res.json({ deleted: true });
     } catch (e) {
+      console.log(e.message);
       return res.status(400).json({
         errors: e.errors.map((err) => err.message),
       });

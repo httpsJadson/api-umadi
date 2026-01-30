@@ -20,6 +20,7 @@ class ObreiroController {
 
       return res.json(parsedObreiros);
     } catch (e) {
+      console.log(e.message);
       return res.status(400).json({
         errors: e.errors.map((err) => err.message),
       });
@@ -39,7 +40,7 @@ class ObreiroController {
         insert: true,
       });
     } catch (e) {
-      console.log(e);
+      console.log(e.message);
       return res.status(400).json({
         errors: e.errors.map((err) => err.message),
       });
@@ -73,6 +74,7 @@ class ObreiroController {
 
       return res.json(obreiroData);
     } catch (e) {
+      console.log(e.message);
       return res.status(400).json({
         errors: e.errors.map((err) => err.message),
       });
@@ -109,6 +111,7 @@ class ObreiroController {
 
       return res.json(updatedData);
     } catch (e) {
+      console.log(e.message);
       return res.status(400).json({
         errors: e.errors.map((err) => err.message),
       });
@@ -135,6 +138,7 @@ class ObreiroController {
       await obreiro.destroy();
       return res.json({ deleted: true });
     } catch (e) {
+      console.log(e.message);
       return res.status(400).json({
         errors: e.errors.map((err) => err.message),
       });

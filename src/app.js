@@ -13,7 +13,7 @@ dotenv.config();
 
 const whiteList = [
   'https://umadi-wave.jadson.cloud',
-  'https://localhost:4174',
+  'http://localhost:4174',
 ];
 
 const corsOptions = {
