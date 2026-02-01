@@ -1,0 +1,17 @@
+
+[4mSequelize CLI [Node: 20.20.0, CLI: 6.6.5, ORM: 6.37.7][24m
+
+[dotenv@17.2.3] injecting env (0) from .env -- tip: 👥 sync secrets across teammates & machines: https://dotenvx.com/ops
+Loaded configuration file "src\config\database.js".
+
+[31mERROR:[39m SequelizeConnectionRefusedError
+    at ConnectionManager.connect (C:\Users\Ferna\Documents\api-umadi\node_modules\sequelize\lib\dialects\mariadb\connection-manager.js:87:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async ConnectionManager._connect (C:\Users\Ferna\Documents\api-umadi\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\Ferna\Documents\api-umadi\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32
+    at async ConnectionManager.getConnection (C:\Users\Ferna\Documents\api-umadi\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:197:7)
+    at async C:\Users\Ferna\Documents\api-umadi\node_modules\sequelize\lib\sequelize.js:305:26
+    at async Sequelize.authenticate (C:\Users\Ferna\Documents\api-umadi\node_modules\sequelize\lib\sequelize.js:457:5)
+    at async exports.handler (C:\Users\Ferna\Documents\api-umadi\node_modules\sequelize-cli\lib\commands\migrate.js:27:7)
+[31mEXTRA MESSAGE:[39m 
+
