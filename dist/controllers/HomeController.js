@@ -28,6 +28,7 @@ class HomeController {
       };
       return res.json(allResults);
     } catch (e) {
+      console.log(e.message);
       return res.status(400).json({
         errors: e.errors.map((err) => err.message),
       });

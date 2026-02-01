@@ -6,6 +6,7 @@ import cors from 'cors';
 import homeRoutes from './routes/homeRoutes';
 import jovemRoutes from './routes/jovemRoutes';
 import obreiroRoutes from './routes/obreiroRoutes';
+import oficinasRoute from './routes/oficinasRoute';
 
 import './database';
 
@@ -43,6 +44,7 @@ class App {
     this.app.use('/', homeRoutes);
     this.app.use('/jovens/', jovemRoutes);
     this.app.use('/obreiros/', obreiroRoutes);
+    this.app.use('/oficinas/', oficinasRoute);
   }
 }
 
