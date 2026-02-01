@@ -4,7 +4,7 @@ import Jovem from '../models/FormJovem';
 class OficinaController {
   async index(req, res) {
     try {
-      const qtdMax = 5;
+      const qtdMax = 200;
       const oficinasSegunda = [
         'Evangelismo Pessoal',
         'Projetos que Nascem no Coração de Deus',
