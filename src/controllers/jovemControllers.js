@@ -17,20 +17,54 @@ class JovemController {
   }
 
   // cadastra um novo jovem
+  // cadastra um novo jovem
   async store(req, res) {
     try {
+      const LIMITE = 200;
+
+      // campos que vêm do front (camelCase)
+      const campos = ["oficinaSegunda", "oficinaTerca", "oficinaQuarta"];
+
+      // mapeia para o nome real da coluna no banco/model (snake_case)
+      const colunaNoBanco = {
+        oficinaSegunda: "oficina_segunda",
+        oficinaTerca: "oficina_terca",   // se no seu banco estiver com cedilha, me avisa
+        oficinaQuarta: "oficina_quarta",
+      };
+
+      for (const field of campos) {
+        const opt = req.body[field];
+        if (!opt) continue;
+
+        const coluna = colunaNoBanco[field];
+
+        const qtd = await Jovem.count({
+          where: { [coluna]: opt },
+        });
+
+        if (qtd >= LIMITE) {
+          return res.status(400).json({
+            errors: [
+              `Quantidade máxima de inscrições para a oficina "${opt}" (${field}) preenchida.`,
+            ],
+          });
+        }
+      }
+
       const jovem = await Jovem.create(req.body);
-      return res.json({
-        ...jovem,
+
+      return res.status(201).json({
+        jovem,
         insert: true,
       });
     } catch (e) {
       console.log(e);
-      return res.status(404).json({
-        errors: e.errors.map((err) => err.message),
+      return res.status(400).json({
+        errors: e?.errors ? e.errors.map((err) => err.message) : ["Erro interno"],
       });
     }
   }
+
 
   // mostra um jovem especifico
   async show(req, res) {
