@@ -34,6 +34,12 @@ class ObreiroController {
       if (req.body.setoresPrioridade && Array.isArray(req.body.setoresPrioridade)) {
         req.body.setores_prioridade = JSON.stringify(req.body.setoresPrioridade);
       }
+      const qtdObreiros = await _FormObreiro2.default.findAndCountAll();
+      if (qtdObreiros.count > 80) {
+        return res.status(400).json({
+          errors: 'Quantidade máxima de obreiros ja preenchida',
+        });
+      }
       const obreiro = await _FormObreiro2.default.create(req.body);
       return res.json({
         ...obreiro.toJSON(),
